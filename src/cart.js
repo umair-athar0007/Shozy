@@ -16,7 +16,7 @@ export function Cart() {
   const { tprice } = useContext(GlobalContext);
   const { price } = useContext(GlobalContext);
 
-  const { transactions } = useContext(GlobalContext);
+  // const { transactions } = useContext(GlobalContext);
   const { delTransaction } = useContext(GlobalContext);
   // let MyCart = transactions.filter((slideContent, index) => {
   //   if (slideContent.Category == "Cart") {
@@ -25,7 +25,7 @@ export function Cart() {
   //   }
 
   // })
-  let [totalvalue, SetTotalvalue] = useState(0)
+  // let [totalvalue, SetTotalvalue] = useState(0)
   useEffect(() => {
     updateBadge(cart.length)
     function totalvalues() {
@@ -40,8 +40,8 @@ export function Cart() {
   }, [cart.CartTotalprice,delTransaction,tprice])
 
   let input = useRef()
-  let add = useRef()
-  let minus = useRef()
+  // let add = useRef()
+  // let minus = useRef()
 
 
 
@@ -49,7 +49,7 @@ export function Cart() {
   //   
 
   // }
-  let [inputValue, SetInputvalue] = useState(1)
+  // let [inputValue, SetInputvalue] = useState(1)
 
   return (
     <>
@@ -65,7 +65,7 @@ export function Cart() {
 
             {
               cart.map((mycartobj, index) => {
-                return <div className="flex flex-wrap border rounded-lg overflow-hidden gap-x-4 sm:gap-y-4 lg:gap-6">
+                return <div key={index} className="flex flex-wrap border rounded-lg overflow-hidden gap-x-4 sm:gap-y-4 lg:gap-6">
                   <a
                     href="#"
                     className="group w-32 sm:w-40 h-48 sm:h-56 block bg-gray-100 overflow-hidden relative"

@@ -1,4 +1,4 @@
-import { Fragment } from 'react'
+import { Fragment, useRef } from 'react'
 import "./style.css"
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, MagnifyingGlassIcon, XMarkIcon, HeartIcon, UserIcon, Cog8ToothIcon, ArrowRightOnRectangleIcon } from '@heroicons/react/24/outline'
@@ -10,12 +10,19 @@ import { Searchbar } from './searchbar'
 import { useState } from 'react'
 import { useLayoutEffect } from 'react'
 import { Wishlist } from './wishlist'
+import { Box } from '@mui/system'
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
 }
 
 
 export default function Header() {
+  let [showNav, setShowNav] = useState(false);
+  const showNavBar = () => {
+    setShowNav((current) => !current);
+  };
+  let Box = useRef()
+
 
   let [navigation, SetNavigation] = useState([
     { name: 'Home', to: "/", current: true },
@@ -54,8 +61,8 @@ export default function Header() {
 
   return (
     <>
-      <Disclosure as="nav" className="  bg-yellow-900">
-      {/* fixed z-50 w-full */}
+      <Disclosure as="nav" className="mynavar  bg-yellow-900">
+        {/* fixed z-50 w-full */}
         {({ open }) => (
           <>
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -107,15 +114,31 @@ export default function Header() {
                 </div>
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   {/* <button
-                  type="button"
-                  className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                >
-                  <span className="sr-only">My Wish List </span>
-                  <HeartIcon className="h-6 w-6" aria-hidden="true" />
-                </button> */}
+                    type="button"
+                    onClick={showNavBar}
+                    className="rounded-full position-relative  relative bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                  >
+                    <span className="sr-only">My Wish List </span>
+                    <HeartIcon className="h-6 w-6" aria-hidden="true" />
+                  </button> */}
+                  {/* <Menu.Item >
+                    {({ active }) => (
+                      <a
+                        href="#"
+                        onClick={showNavBar}
+                        className={classNames(active ? 'bg-blue-100 manuItems hover:text-orange-500' : '', 'block manuItems px-4 py-2 text-sm text-gray-700')}
+                      >
+                        <MagnifyingGlassIcon className="h-6 myy w-6" aria-hidden="true" />
+
+                      </a>
+                    )}
+                  </Menu.Item> */}
+
+
+
 
                   {/* <Link to={"/Wishlist"} ><WishLIstButton /></Link> */}
-                  <Link to={"/cart"} > <Cartbutton  /></Link>
+                  <Link to={"/cart"} > <Cartbutton /></Link>
 
 
                   {/* Profile dropdown */}
@@ -150,6 +173,7 @@ export default function Header() {
                             </a>
                           )}
                         </Menu.Item>
+
                         <Menu.Item>
                           {({ active }) => (
                             <a
@@ -210,6 +234,10 @@ export default function Header() {
           </>
         )}
       </Disclosure>
+      <div className={showNav ? `d-block searchbar slideintop ` : ` searchbar  d-none `}>
+
+        <input placeholder='Enter Search Items' type="text" />
+      </div>
     </>
   )
 }

@@ -1,10 +1,9 @@
 import React from "react";
 import "./style.css"
 import { HeartIcon } from '@heroicons/react/24/outline'
-import { Navigation, Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
+import { Navigation , Pagination, Scrollbar, A11y, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { EffectFade } from 'swiper';
-import 'swiper/css/effect-fade';
 import { useState } from 'react'
 import { useLayoutEffect } from 'react'
 import { useParams } from "react-router";
@@ -17,6 +16,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 import "swiper/css/autoplay";
+// import 'swiper/css/effect-fade';
+// import 'swiper/css/EffectCards';
+
 import { useEffect } from "react";
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -170,7 +172,7 @@ export function SwiperSlider() {
 
     </div>
     <Swiper
-      modules={[Navigation, EffectFade, Autoplay, Pagination, Scrollbar, A11y]}
+      modules={[Navigation  ,EffectFade, Autoplay, Pagination, Scrollbar, A11y]}
 
       spaceBetween={20}
       slidesPerView={sliderCols}

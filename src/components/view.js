@@ -11,8 +11,8 @@ import toast, { Toaster } from 'react-hot-toast';
 export function View() {
   const { transactions } = useContext(GlobalContext);
   const { cart } = useContext(GlobalContext)
-console.log("cart objects");
-console.log(cart);
+  console.log("cart objects");
+  console.log(cart);
   console.log(transactions);
   let { Type } = useParams();
   let { Id } = useParams();
@@ -44,8 +44,8 @@ console.log(cart);
 
   return (<>
     {
-      element.map((typeObj) => {
-        return <div className="bg-white py-6 sm:py-8 lg:py-12">
+      element.map((typeObj , index) => {
+        return <div key={index} className="bg-white py-6 sm:py-8 lg:py-12">
           <div className="max-w-screen-xl px-4 md:px-8 mx-auto">
             <div className="grid md:grid-cols-2 gap-8">
               {/* images - start */}
@@ -152,15 +152,15 @@ console.log(cart);
                     <button
                       type="button"
                       className="w-8 h-8 bg-gray-500 border ring-2 ring-offset-1 ring-transparent hover:ring-gray-200 rounded-full transition duration-100"
-                      />
+                    />
                     <button
                       type="button"
                       className="w-8 h-8 bg-gray-200 border ring-2 ring-offset-1 ring-transparent hover:ring-gray-200 rounded-full transition duration-100"
-                      />
+                    />
                     <button
                       type="button"
                       className="w-8 h-8 bg-white border ring-2 ring-offset-1 ring-transparent hover:ring-gray-200 rounded-full transition duration-100"
-                      />
+                    />
                   </div>
                 </div>
                 {/* color - end */}
@@ -173,13 +173,13 @@ console.log(cart);
                     <button
                       type="button"
                       className="w-12 h-8 flex justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 text-gray-800 text-sm font-semibold text-center border rounded-md transition duration-100"
-                      >
+                    >
                       XS
                     </button>
                     <button
                       type="button"
                       className="w-12 h-8 flex justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 text-gray-800 text-sm font-semibold text-center border rounded-md transition duration-100"
-                      >
+                    >
                       S
                     </button>
                     <span className="w-12 h-8 flex justify-center items-center bg-indigo-500 text-white text-sm font-semibold text-center border border-indigo-500 rounded-md cursor-default">
@@ -188,7 +188,7 @@ console.log(cart);
                     <button
                       type="button"
                       className="w-12 h-8 flex justify-center items-center bg-white hover:bg-gray-100 active:bg-gray-200 text-gray-800 text-sm font-semibold text-center border rounded-md transition duration-100"
-                      >
+                    >
                       L
                     </button>
                     <span className="w-12 h-8 flex justify-center items-center bg-white text-gray-400 text-sm font-semibold text-center border border-transparent rounded-md cursor-not-allowed">
@@ -216,7 +216,7 @@ console.log(cart);
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
-                    >
+                  >
                     <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
                     <path
                       strokeLinecap="round"
@@ -240,24 +240,24 @@ console.log(cart);
                         })
                         if (!(elementexist.includes(typeObj.id))) {
                           typeObj["CartTotalprice"] = typeObj.price
-                          
+
                           addTransaction(typeObj)
                           toast.success('Added to Cart');
-                          }else{
-                            toast.error('Already In Cart');
-                          }
-                          
                         } else {
-                          toast.success('Added to Cart');
-                          typeObj["CartTotalprice"] = typeObj.price
-                          
-                          addTransaction(typeObj)
-                          
+                          toast.error('Already In Cart');
                         }
+
+                      } else {
+                        toast.success('Added to Cart');
+                        typeObj["CartTotalprice"] = typeObj.price
+
+                        addTransaction(typeObj)
+
+                      }
                       // addTransaction( {"Category": "Cart", "brand": slideContent.brand  , "id": slideContent.id  , "price": slideContent.price,  "Ptype": slideContent.Ptype, "src": slideContent.src, "name": slideContent.name })
 
-                  }}
-                  className="inline-block flex-1 sm:flex-none bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3"
+                    }}
+                    className="inline-block flex-1 sm:flex-none bg-indigo-500 hover:bg-indigo-600 active:bg-indigo-700 focus-visible:ring ring-indigo-300 text-white text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3"
                   >
                     Add to cart
                   </button>
@@ -266,7 +266,7 @@ console.log(cart);
                   <a
                     href="#"
                     className="inline-block bg-gray-200 hover:bg-gray-300 focus-visible:ring ring-indigo-300 text-gray-500 active:text-gray-700 text-sm md:text-base font-semibold text-center rounded-lg outline-none transition duration-100 px-8 py-3"
-                    >
+                  >
                     Buy now
                   </a>
                 </div>
@@ -280,8 +280,8 @@ console.log(cart);
     }
   </>
   )
-  
 
-  
+
+
 }
 // asses freefronted

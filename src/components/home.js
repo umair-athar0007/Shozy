@@ -21,9 +21,9 @@ export function Home() {
   })
   const { cart } = useContext(GlobalContext)
 
-  useEffect(()=>{
+  useEffect(() => {
     updateBadge(cart.length)
-  },[cart])
+  }, [cart])
 
   return <div>
 
@@ -49,14 +49,15 @@ export function Home() {
         </span>
 
       </h2>
-      
+
     </div>
-    <div className="slider">     <SwiperSlider /> 
-    <Toaster />
-        </div>
+    <div className="slider">
+      <SwiperSlider />
+      <Toaster />
+    </div>
 
     <div className="footer">     <Footer />     </div>
     <Toaster position="bottom-left"
-                    reverseOrder={true} />
+      reverseOrder={true} />
   </div>
 } 
